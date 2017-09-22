@@ -1,0 +1,35 @@
+{
+  "NAME": "example-name",
+  "DEBUG": true,
+  "SERECT": "some-random-char-string-stronger-the-better",
+  "KEY": "AES-256or512-key",
+  "TIMEZONE": "UTC",
+  "DEFAULT_LANGUAGE": "en",
+  "HOST": "localhost",
+  "SQLALCHEMY_TRACK_MODIFICATIONS": false,
+  "SQLALCHEMY_ECHO": false,
+  "API": {
+    "VERSION": "1",
+    "PREFIX": "v{version}"
+  },
+  "AUTH": {
+    "MAX_SESSIONS": 2,
+    "USER_FIELD": "email",
+    "PASSWORD_FIELD": "password",
+    "PASSWORD_HASHING": "pbkdf2:sha512"
+  },
+  "EMAIL": {
+    "HOST": "smtp-host",
+    "PORT": smtp-port,
+    "EMAIL": "smtp-email",
+    "NAME": "sending-name",
+    "AUTH": "true",
+    "TRANSPORT": "tls",
+    "USERNAME": "smtp-username",
+    "PASSWORD": "smtp-password"
+  },
+  "SQLALCHEMY_BINDS": {
+    "default": "mysql://user:password@localhost/db",
+    "another-db": "mysql://user:password@localhost/db"
+  }
+}

@@ -1,0 +1,36 @@
+version: "2"
+services:
+  nginx-uwsgi1:
+      container_name: nginx-uwsgi1
+      extends:
+            file: ./nginx-uwsgi.yml
+            service: nginx-uwsgi
+      ports:
+          - "5000:5000"
+      expose:
+          - "5000"
+  nginx-uwsgi2:
+      container_name: nginx-uwsgi2
+      extends:
+            file: ./nginx-uwsgi.yml
+            service: nginx-uwsgi
+  nginx-uwsgi3:
+      container_name: nginx-uwsgi3
+      extends:
+            file: ./nginx-uwsgi.yml
+            service: nginx-uwsgi
+  haproxy:
+      container_name: haproxy
+      image: haproxy
+      volumes:
+          - ./haproxy:/usr/local/etc/haproxy/
+      links:
+          - nginx-uwsgi1
+          - nginx-uwsgi2
+          - nginx-uwsgi3
+      ports:
+          - "80:80"
+          - "81:81"
+      expose:
+          - "80"
+          - "81"

@@ -1,0 +1,15 @@
+version: "2"
+services:
+  nginx-uwsgi:
+      build:
+          context: ./build
+      volumes:
+          - ../app:/srv/
+      expose:
+          - "80"
+          - "81"
+      environment:
+          - APP_ENV=dev
+      extends:
+          file: ./hosts.yml
+          service: hosts
